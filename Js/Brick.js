@@ -1,16 +1,16 @@
 let Brick = function () {
-    this.offsetX = offsetX;
-    this.offsetY = offsetY;
-    this.margin = margin;
-    this.width = width;
-    this.height = height;
-    this.totalRow = totalRow;
-    this.totalCol = totalCol;
-    BrickArr = [];
+    this.offsetX = 25;
+    this.offsetY = 40;
+    this.margin = 15;
+    this.width = 80;
+    this.height = 15;
+    this.totalRow = 6;
+    this.totalCol = 6;
+    BrickList = [];
 
     for (let i = 0; i < this.totalRow; i++) {
         for (let j = 0; j < this.totalCol; j++) {
-            BrickArr.push({
+            BrickList.push({
                 x: this.offsetX + j * (this.width + this.margin),
                 y: this.offsetY + i * (this.height + this.margin),
                 isBroken: false
@@ -19,15 +19,34 @@ let Brick = function () {
     }
 
     this.drawBrick = function () {
-        BrickArr.forEach(function (b) {
+        BrickList.forEach(function (b) {
             if (!b.isBroken) {
-                context.beginPath();
-                context.rect(b.x, b.y, brick.width, brick.height);
-                context.fillStyle = 'brown';
-                context.fill();
-                context.closePath();
+                ctx.beginPath();
+                ctx.rect(b.x, b.y, brick.width, brick.height);
+                ctx.fillStyle = 'brown';
+                ctx.fill();
+                ctx.closePath();
+            }
+        })
+    }
+
+    this.handlingBallCollisionsBrick = function () {
+        BrickList.forEach(function (b) {
+            if (!b.isBroken) {
+                if (ball.x >= b.x && ball.x <= b.x + brick.width &&
+                    ball.y + ball.radius >= b.y && ball.y - ball.radius <= b.y + brick.height) {
+                    ball.dy = -ball.dy;
+                    b.isBroken = true;
+                    UserScore += 1;
+                    if(UserScore >= MaxScore) {
+                        isGameOver = true;
+                        isGameWin = true;
+                    }
+                }
             }
         })
     }
 }
-// let brick = new Brick(25,40,15,80,25,6,4,[]);
+let brick = new Brick();
+let UserScore = 0;
+let MaxScore = brick.totalRow * brick.totalCol;

@@ -17,7 +17,7 @@ let Ball = function (x, y, dx, dy, radius) {
         this.y += this.dy;
     };
 
-    this.handlingBallCollisions = function () {
+    this.handlingBallCollisions= function () {
         if (this.x < this.radius || this.x > myCanvas.width - this.radius) {
             this.dx = -this.dx;
         }
@@ -26,10 +26,10 @@ let Ball = function (x, y, dx, dy, radius) {
         }
     };
 
-    this.checkBall = function () {
+    this.checkBallWidthBorder = function () {
         if(this.y > myCanvas.height - this.radius) {
             isGameOver = true;
         }
     };
 }
-// let ball = new Ball(295, 460, 7, 5, 15);
+let ball = new Ball(290, 460, 5, 5, 10);

@@ -26,7 +26,7 @@ let Paddle = function (x, y, width, height, speed) {
             this.x = myCanvas.width - this.width;
         }
     };
-    this.handlingPaddleCollisions = function () {
+    this.handlingPaddleCollisionsWithBall = function () {
         if (ball.x + ball.radius >= this.x && ball.x + ball.radius <= this.x + this.width &&
         ball.y +ball.radius >= myCanvas.height - this.height) {
             ball.dy = -ball.dy;
@@ -46,5 +46,5 @@ let Paddle = function (x, y, width, height, speed) {
             paddle.isMovingRight = true;
         }
     });
-}
-// let paddle = new Paddle(255, myCanvas.height - 20, 100, 20, 10);
+};
+let paddle = new Paddle(250, myCanvas.height - 20, 100, 20, 10);

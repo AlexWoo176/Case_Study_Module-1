@@ -1,18 +1,31 @@
-    let myCanvas = document.getElementById('myCanvas');
-    let ctx = myCanvas.getContext('2d');
-    let isGameOver = false;
-    let ball = new Ball(290, 460, 5, 5, 15);
-    let paddle = new Paddle(250, myCanvas.height - 20, 100, 20, 10);
-    let brick = new Brick(25,40,15,80,15,6,4,[]);
+let myCanvas = document.getElementById('myCanvas');
+let ctx = myCanvas.getContext('2d');
+let isGameOver = false;
+let isGameWin = false;
 
 function playgame () {
     if(!isGameOver) {
         ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
         ball.drawBall();
+        ball.updateBallPosition();
+        ball.handlingBallCollisions();
+        ball.checkBallWidthBorder();
         paddle.drawPaddle();
+        paddle.movingEdgePaddle();
+        paddle.checkMovingPaddle();
+        paddle.handlingPaddleCollisionsWithBall();
         brick.drawBrick();
+        brick.handlingBallCollisionsBrick();
         requestAnimationFrame(playgame);
     } else {
-        console.log('GAME OVER');
+        if (isGameWin) {
+            alert('YOU WIN');
+        } else {
+            alert('YOU LOSE')
+        }
     }
+}
+
+function restart() {
+    document.location.reload();
 }
