@@ -4,6 +4,7 @@ h1  {
 }
 #myCanvas {
     border: 2px solid darkslategray;
+    background-color: aquamarine;
 }
 #form {
     text-align: center;

@@ -1,6 +1,6 @@
 let Brick = function () {
     this.offsetX = 25;
-    this.offsetY = 40;
+    this.offsetY = 25;
     this.margin = 15;
     this.width = 80;
     this.height = 15;
@@ -23,7 +23,7 @@ let Brick = function () {
             if (!b.isBroken) {
                 ctx.beginPath();
                 ctx.rect(b.x, b.y, brick.width, brick.height);
-                ctx.fillStyle = 'brown';
+                ctx.fillStyle = 'brown'
                 ctx.fill();
                 ctx.closePath();
             }
