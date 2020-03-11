@@ -24,8 +24,8 @@ function playgame () {
             alert('YOU LOSE')
         }
     }
-}
+};
 
 function restart() {
     document.location.reload();
-}
+};
