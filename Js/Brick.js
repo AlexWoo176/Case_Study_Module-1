@@ -1,4 +1,4 @@
-let Brick = function (offsetX, offsetY, magin, width, height, totalRow, totalCol, []) {
+let Brick = function () {
     this.offsetX = offsetX;
     this.offsetY = offsetY;
     this.margin = margin;
