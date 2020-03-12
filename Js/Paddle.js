@@ -12,8 +12,8 @@ let Paddle = function (x, y, width, height, speed) {
     // Vẽ Thanh Chắn ngang
     this.drawPaddle = function () {
         ctx.beginPath();
-        ctx.rect(this.x, this.y, this,width, this.height);
-        ctx.fillStyle = 'red';
+        ctx.rect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = 'blue';
         ctx.fill();
         ctx.closePath();
     };

@@ -4,6 +4,7 @@ let isGameOver = false;
 let isGameWin = false;
 
 function playgame () {
+    // requestAnimationFrame(playgame);
     if(!isGameOver) {
         ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
         ball.drawBall();
