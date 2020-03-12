@@ -1,3 +1,8 @@
+const ParameterKeyBoard = {
+    KEYLEFT = 37,
+    KEYRIGHT = 39
+};
+
 let Paddle = function (x, y, width, height, speed) {
     this.x = x;
     this.y = y;
@@ -5,6 +10,7 @@ let Paddle = function (x, y, width, height, speed) {
     this.height = height;
     this.speed = speed;
 
+    // Vẽ Thanh Chắn ngang
     this.drawPaddle = function () {
         ctx.beginPath();
         ctx.rect(this.x, this.y, this,width, this.height);
@@ -12,6 +18,8 @@ let Paddle = function (x, y, width, height, speed) {
         ctx.fill();
         ctx.closePath();
     };
+
+    // Kiểm tra di chuyển của thanh chắn
     this.checkMovingPaddle = function () {
         if(this.isMovingLeft) {
             this.x -= this.speed;
@@ -19,6 +27,8 @@ let Paddle = function (x, y, width, height, speed) {
             this.x += this.speed;
         }
     };
+
+    // Xử lý di chuyển của thanh chắn với hai biên
     this.movingEdgePaddle = function () {
         if(this.x < 0) {
             this.x = 0;
@@ -26,23 +36,27 @@ let Paddle = function (x, y, width, height, speed) {
             this.x = myCanvas.width - this.width;
         }
     };
+
+    // Xử lý va chạm giữa thanh chắn và bóng
     this.handlingPaddleCollisionsWithBall = function () {
         if (ball.x + ball.radius >= this.x && ball.x + ball.radius <= this.x + this.width &&
         ball.y +ball.radius >= myCanvas.height - this.height) {
             ball.dy = -ball.dy;
         }
     };
+
+    // Xủ lý bắt sự kiện của bàn phím với thanh chắn
     document.addEventListener("keyup", function (event) {
-        if (event.keyCode == 37) {
+        if (event.keyCode == ParameterKeyBoard.KEYLEFT) {
             paddle.isMovingLeft = false;
-        } else if (event.keyCode == 39) {
+        } else if (event.keyCode == ParameterKeyBoard.KEYRIGHT) {
             paddle.isMovingRight = false;
         }
     });
     document.addEventListener("keyup", function (event) {
-        if (event.keyCode == 37) {
+        if (event.keyCode == ParameterKeyBoard.KEYLEFT) {
             paddle.isMovingLeft = true;
-        } else if (event.keyCode == 39) {
+        } else if (event.keyCode == ParameterKeyBoard.KEYRIGHT) {
             paddle.isMovingRight = true;
         }
     });

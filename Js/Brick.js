@@ -8,6 +8,7 @@ let Brick = function () {
     this.totalCol = 6;
     BrickList = [];
 
+    // Tạo mạng lưu tọa độ các viên gạch
     for (let i = 0; i < this.totalRow; i++) {
         for (let j = 0; j < this.totalCol; j++) {
             BrickList.push({
@@ -18,6 +19,7 @@ let Brick = function () {
         }
     }
 
+    // Tạo ra các viên gạch
     this.drawBrick = function () {
         BrickList.forEach(function (b) {
             if (!b.isBroken) {
@@ -30,6 +32,7 @@ let Brick = function () {
         })
     }
 
+    // Xử lý va chạm giữa bóng và gạch
     this.handlingBallCollisionsBrick = function () {
         BrickList.forEach(function (b) {
             if (!b.isBroken) {
