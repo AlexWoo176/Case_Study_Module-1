@@ -1,4 +1,7 @@
-
+const PARAMETERKEYBOARD = {
+    KEYLEFT: 37,
+    KEYRIGHT: 39
+};
 let Paddle = function (x, y, width, height, speed) {
     this.x = x;
     this.y = y;
@@ -44,16 +47,16 @@ let Paddle = function (x, y, width, height, speed) {
     // Xủ lý bắt sự kiện của bàn phím với thanh chắn
 
     document.addEventListener("keyup", function (event) {
-        if (event.keyCode == 37) {
+        if (event.keyCode == PARAMETERKEYBOARD.KEYLEFT) {
             paddle.isMovingLeft = false;
-        } else if (event.keyCode == 39) {
+        } else if (event.keyCode == PARAMETERKEYBOARD.KEYRIGHT) {
             paddle.isMovingRight = false;
         }
     });
-    document.addEventListener("keyup", function (event) {
-        if (event.keyCode == 37) {
+    document.addEventListener("keydown", function (event) {
+        if (event.keyCode == PARAMETERKEYBOARD.KEYLEFT) {
             paddle.isMovingLeft = true;
-        } else if (event.keyCode == 39) {
+        } else if (event.keyCode == PARAMETERKEYBOARD.KEYRIGHT) {
             paddle.isMovingRight = true;
         }
     });
